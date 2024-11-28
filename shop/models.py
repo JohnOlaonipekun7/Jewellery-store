@@ -1,8 +1,8 @@
-# shop/models.py
 from django.db import models
 import uuid
 from django.urls import reverse
 
+# Category model
 class Category(models.Model):
     id = models.UUIDField(
         primary_key=True,
@@ -11,7 +11,7 @@ class Category(models.Model):
     )
     name = models.CharField(max_length=250, unique=True)
     description = models.TextField(blank=True)
-    image = models.ImageField(upload_to='category', blank=True)
+    image = models.ImageField(upload_to='category_images/', blank=True, null=True)  # Store images in category_images folder
 
     class Meta:
         ordering = ('name',)
@@ -24,7 +24,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-
+# Product model
 class Product(models.Model):
     id = models.UUIDField(
         primary_key=True,
@@ -33,10 +33,10 @@ class Product(models.Model):
     )
     name = models.CharField(max_length=250, unique=True)
     description = models.TextField(blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='product', blank=True)
-    stock = models.PositiveIntegerField()
+    image = models.ImageField(upload_to='product_images/', blank=True, null=True)  # Store images in product_images folder
+    stock = models.IntegerField()
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated = models.DateTimeField(auto_now=True, blank=True, null=True)

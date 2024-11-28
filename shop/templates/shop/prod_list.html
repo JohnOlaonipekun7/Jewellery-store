@@ -3,32 +3,55 @@
 {% block content %}
 <div class="container mt-4">
     <h1 class="text-center mb-4">Product List</h1>
-    {% if products %}
-    <div class="row">
-        {% for product in products %}
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <img
-                    src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'images/default-product.jpg' %}{% endif %}"
-                    class="card-img-top"
-                    alt="{{ product.name }}"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text text-muted">{{ product.description|truncatewords:20 }}</p>
-                    <p class="card-text fw-bold">${{ product.price }}</p>
-                    <a href="{% url 'shop:product_detail' product.category.id product.id %}" class="btn btn-primary">
-                        View Details
-                    </a>
-                </div>
-            </div>
+    
+    {% if category %}
+        <div class="mx-auto">
+            <img class="my_image" src="{{ category.image.url }}" alt="{{ category.name }}">
         </div>
-        {% endfor %}
-    </div>
+        <br>
+        <div>
+            <h1 class="text-center my_title">{{ category.name }}</h1>
+            <p class="text-justify">{{ category.description }}</p>
+        </div>
     {% else %}
-    <div class="alert alert-info text-center" role="alert">
-        No products available at the moment. Please check back later!
-    </div>
+        <img class="my_image my_image_padding" src="{% static 'images/banner.jpg' %}" alt="Our Products Collection">
+        <br>
+        <div>
+            <h1 class="text-center my_title">Our Products Collection</h1>
+            <p class="text-justify">
+                Finding the perfect cushion for your room can instantly add to the levels of comfort and sense of style throughout your home.
+                They can transform the blandest of decors instantly by adding colour, softness, and an air of cosiness. 
+                As well as being comfy and looking great, our range of cushions will certainly embolden your décor with personalised charm.
+            </p>
+        </div>
+    {% endif %}
+    
+    {% if products %}
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img
+                            src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'images/default-product.jpg' %}{% endif %}"
+                            class="card-img-top"
+                            alt="{{ product.name }}"
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text text-muted">{{ product.description|truncatewords:20 }}</p>
+                            <p class="card-text fw-bold">${{ product.price }}</p>
+                            <a href="{% url 'shop:product_detail' product.category.id product.id %}" class="btn btn-primary">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center" role="alert">
+            No products available at the moment. Please check back later!
+        </div>
     {% endif %}
 </div>
 {% endblock %}
