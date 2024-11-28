@@ -1,12 +1,32 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
+{% block metadescription %}
+    Sign in to enjoy shopping our curated selection of stunning jewelry and accessories.
+{% endblock %}
+{% block title %}
+    Login - Jewellery & Accessories Store
+{% endblock %}
 {% block content %}
-<div class="container mt-5">
-    <h2 class="text-center">Login</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Login</button>
-    </form>
+<div class="container mt-4">
+    <h1 class="my_title text-center">Login or Create an Account</h1>
+    <div class="row">
+        <!-- New Customer Section -->
+        <div class="col-12 col-md-6 text-center">
+            <h2 class="my_title">New to Our Store?</h2>
+            <p>Join us and explore the finest collection of jewelry and accessories.</p>
+            <a href="{% url 'accounts:signup' %}" class="btn btn-primary">Create a New Account</a>
+        </div>
+        
+        <!-- Existing Customer Login -->
+        <div class="col-12 col-md-6 bg-light p-4">
+            <h2 class="my_title">Already Have an Account?</h2>
+            <form method="post">
+                {% csrf_token %}
+                <p>{{ form | crispy }}</p>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}
