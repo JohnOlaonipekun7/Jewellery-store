@@ -7,3 +7,13 @@
     transform: scale(1.05);
 }
 
+.btn-gold {
+    background-color: #d4af37;
+    color: white;
+    border: none;
+}
+
+.btn-gold:hover {
+    background-color: #b38c2d;
+}
+

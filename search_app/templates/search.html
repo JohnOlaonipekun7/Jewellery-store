@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block metadescription %}
+We have a variety of stunning and elegant jewelry pieces. Find the perfect accessory for you.
+{% endblock %}
+
+{% block title %}
+Search - Jewellery Store
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="text-center">
+        <p class="my_search_text">You have searched for: <strong>"{{ query }}"</strong></p>
+    </div>
+
+    <div class="row">
+        {% for product in product_list %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card shadow-lg border-0 rounded" style="min-width: 18rem;">
+                    <a href="{{ product.get_absolute_url }}">
+                        <img class="card-img-top my_image" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    </a>
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-gold">{{ product.name }}</h5>
+                        <p class="card-text">€{{ product.price }}</p>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12 text-center">
+                <p class="my_search_text">No results found for "<strong>{{ query }}</strong>".</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
