@@ -17,3 +17,26 @@
     background-color: #b38c2d;
 }
 
+.my_custom_table th, .my_custom_table td {
+    border: 1px solid #d4af37;
+}
+
+.my_custom_thead {
+    background-color: #d4af37;
+    color: white;
+}
+
+.custom_image {
+    max-width: 50px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.custom_a {
+    text-decoration: none;
+    color: #d4af37;
+}
+
+.custom_icon:hover {
+    color: #b38c2d;
+}

@@ -24,7 +24,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-# Product model
+
 class Product(models.Model):
     id = models.UUIDField(
         primary_key=True,
@@ -35,7 +35,7 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='product_images/', blank=True, null=True)  # Store images in product_images folder
+    image = models.ImageField(upload_to='product_images/', blank=True, null=True)
     stock = models.IntegerField()
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True, blank=True, null=True)

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
+from cart.models import Cart, CartItem
 
 def all_products(request):
     products = Product.objects.filter(available=True)

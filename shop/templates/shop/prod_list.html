@@ -3,7 +3,6 @@
 {% block content %}
 <div class="container mt-4">
     <h1 class="text-center mb-4">Product Collection</h1>
-    
     {% if category %}
         <div class="mx-auto">
             <img class="my_image" src="{{ category.image.url }}" alt="{{ category.name }}">
@@ -22,7 +21,6 @@
             </h2>
         </div>
     {% endif %}
-    
     {% if products %}
         <div class="row">
             {% for product in products %}
