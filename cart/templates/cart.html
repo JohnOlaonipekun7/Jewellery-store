@@ -28,6 +28,7 @@
                         <td>€{{ cart_item.product.price }}</td>
                         <td>€{{ cart_item.sub_total }}</td>
                         <td>
+                            <div class="d-flex gap-2"> 
                             {% if cart_item.quantity < cart_item.product.stock %}
                             <a href="{% url 'cart:add_cart' cart_item.product.id %}" class="text-success" style="font-size: 1.5rem; text-decoration: none;">
                                 <i class="bi bi-plus-lg"></i>
@@ -46,6 +47,7 @@
                                 <i class="bi bi-trash"></i>
                             </a>
                         {% endif %}
+                        </div>
                         </td>
                     </tr>
                 {% endfor %}
@@ -86,16 +88,19 @@
                         </tbody>
                     </table>
                     <p>Apply a voucher:</p>
+                    <div class=" flex-column gap-3">
                     <form action="{% url 'vouchers:apply' %}" method="post">
                         {{ voucher_apply_form }}
-                        <input type="submit" value="Apply">
+
+                        <input type="submit" value="Apply" class="btn btn-primary">
                         {% csrf_token %}
-                    </form>
-        <a href="{% url 'shop:all_products' %}" class="btn btn-secondary">Continue Shopping</a>
+                    </form>         
+        <a href="{% url 'shop:all_products' %}" class="btn btn-secondary my_custom_button  d-inline-block mx-auto ">Continue Shopping</a>
         <form action="{% url 'cart:cart_detail' %}" method="POST">
             {% csrf_token %}
-            <button class="btn btn-secondary btn-block my_custom_button" type="submit">Pay with card</button>
+            <button class="btn btn-secondary my_custom_button d-inline-block mx-auto" style="max-width: 200px; margin: 0 auto;" type="submit">Pay with card</button>
         </form>
+        </div>
             {% if error %}
                 <p style="color: red;">Error: {{ error }}</p>
             {% endif %}

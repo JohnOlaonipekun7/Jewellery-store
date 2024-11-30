@@ -16,13 +16,13 @@
             <h4>€{{ product.price }}</h4>
             
             {% if product.stock > 0 %}
-                <a href="{% url 'cart:add_cart' product.id %}" class="btn btn-success">Add to Cart</a>
+                <a href="{% url 'cart:add_cart' product.id %}" class="btn btn-success mt-3">Add to Cart</a>
             {% else %}
-                <button class="btn btn-danger" disabled>Out of Stock</button>
+                <button class="btn btn-danger mt-3" disabled>Out of Stock</button>
             {% endif %}
 
             {% if product in cart_items %}
-                <a href="{% url 'cart:remove_cart_item' product.id %}" class="btn btn-danger mt-2">Remove from Cart</a>
+                <a href="{% url 'cart:remove_cart_item' product.id %}" class="btn btn-danger mt-3">Remove from Cart</a>
             {% endif %}
 
             <a href="{% url 'shop:all_products' %}" class="btn btn-secondary mt-3">Back to Products</a>

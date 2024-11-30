@@ -1,11 +1,17 @@
-.card {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+
+.navbar-light .navbar-nav .nav-link {
+    color: #333 !important;
 }
 
-.card:hover {
-    transform: scale(1.05);
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #d4af37 !important;
 }
+
+.navbar-brand {
+    font-weight: bold;
+    color: #d4af37 !important;
+}
+
 
 .btn-gold {
     background-color: #d4af37;
@@ -17,28 +23,57 @@
     background-color: #b38c2d;
 }
 
-.my_custom_table th, .my_custom_table td {
-    border: 1px solid #d4af37;
-}
 
-.my_custom_thead {
-    background-color: #d4af37;
-    color: white;
-}
-
-.custom_image {
-    max-width: 50px;
-    height: auto;
-    border-radius: 5px;
-}
-
-.custom_a {
-    text-decoration: none;
+.bi-cart {
+    font-size: 18px;
     color: #d4af37;
 }
 
-.custom_icon:hover {
-    color: #b38c2d;
+.bi-clock-history {
+    font-size: 18px;
+    color: #d4af37;
 }
 
+img {
+    max-width: 100%;
+    height: auto; 
+    display: block; 
+}
+
+
+.card-img-top {
+    width: 100%; 
+    height: 300px; 
+    object-fit: cover; 
+}
+
+
+.img-fluid {
+    max-width: 100%; 
+    height: 400px; 
+    object-fit: contain; 
+}
+
+
+.my_image {
+    width: 100%; 
+    height: 300px;
+    object-fit: cover; 
+    display: block; 
+    margin: 0 auto; 
+}
+
+.my_image.my_image_padding {
+    height: 400px;
+    object-fit: cover; 
+    margin-bottom: 20px; 
+}
+
+.product-buttons .btn {
+    margin-bottom: 10px;
+}
+
+.product-buttons .btn:last-child {
+    margin-top: 15px; 
+}
 
