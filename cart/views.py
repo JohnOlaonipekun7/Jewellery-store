@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 from shop.models import Product
 from .models import Cart, CartItem
+import stripe
+from django.conf import settings
+from django.urls import reverse
 
 def _cart_id(request):
     cart = request.session.session_key
@@ -34,11 +37,48 @@ def cart_detail(request, total=0, counter=0, cart_items=None):
             counter += cart_item.quantity
     except ObjectDoesNotExist:
         pass
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    stripe_total = int(total * 100)
+    description = 'Online Shop - New Order'
+    
+
+    if request.method == 'POST':
+        try:
+
+            checkout_session = stripe.checkout.Session.create(
+                payment_method_types=['card'],
+                line_items=[{
+                    'price_data': {
+                        'currency': 'eur',
+                        'product_data': {
+                            'name': 'Order from Perfect Cushion Shop',
+                        },
+                        'unit_amount': stripe_total,
+                    },
+                    'quantity': 1,
+                }],
+                mode='payment',
+ 		   billing_address_collection='required', 
+                shipping_address_collection={},
+                payment_intent_data={'description': description},
+                success_url=request.build_absolute_uri(reverse('shop:all_products')), 
+                cancel_url=request.build_absolute_uri(reverse('cart:cart_detail')),    
+            )
+            return redirect(checkout_session.url, code=303)
+        except Exception as e:
+            return render(request, 'cart.html', {
+                'cart_items': cart_items,
+                'total': total,
+                'counter': counter,
+                'error': str(e),
+            })
+
     return render(request, 'cart.html', {
         'cart_items': cart_items,
         'total': total,
-        'counter': counter
+        'counter': counter,
     })
+
 def remove_cart_item(request, product_id):
     cart = Cart.objects.get(cart_id=_cart_id(request))
     product = get_object_or_404(Product, id=product_id)
