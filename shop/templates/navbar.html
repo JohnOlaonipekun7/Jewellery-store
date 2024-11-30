@@ -14,8 +14,10 @@
                 </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
-                    </li>
+                        <form action="{% url 'accounts:logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-link btn btn-link">Logout</button>
+                        </form>
                 {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
@@ -28,6 +30,10 @@
                         </a>
                     </li>
                 {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'order:order_history' %}">
+                        <i class="fas fa-history"></i> Order History
+                    </a>
             </ul>
             <form class="d-flex ms-auto" action="{% url 'search_app:searchResult' %}" method="get">
                 <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search" name="q">

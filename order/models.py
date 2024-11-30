@@ -1,4 +1,5 @@
 from django.db import models
+
 class Order(models.Model):
     token = models.CharField(max_length=250, blank=True)
     total = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Euro Order Total')
