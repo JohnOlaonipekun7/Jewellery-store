@@ -2,7 +2,9 @@ Jewellery Store Project
 
 This project is a e-commerce platform for a jewellery and accessories store. It allows users to browse products, manage shopping carts, place orders, and more. It includes features like a voucher system.
 
-John Olaonipekun - X00214104 - JohnOlaonipekun7
+John Olaonipekun 
+Student ID: X00214104 
+Github: JohnOlaonipekun7
 
 Contributions:
 Set up Django project structure
@@ -13,7 +15,9 @@ Made voucher system
 Styled templates with Bootstrap and Bootstrap icons
 Created the README and requirements.txt
 
-Sohayb Aabirouch - X00213596 - sohaybaa
+Sohayb Aabirouch 
+Student ID: X00213596 
+Github: sohaybaa
 
 Contributions:
 
