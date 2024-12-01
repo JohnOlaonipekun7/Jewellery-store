@@ -45,6 +45,7 @@ password:softdevca
 
 ## Acknowledgments
 
-Some sections of the code and foundational ideas are derived from the lab exercises provided.  
-The labs covered topics like CRUD operations, authentication, cart functionality, order functionality.  
-These exercises served as a starting point and were further expanded upon to create this project.
+This project was developed using the lab excercises as a foundation   
+Addition work was done to integrate these into a project,changing the style and functionality
+
+Dependencies listed in requirements.txt
