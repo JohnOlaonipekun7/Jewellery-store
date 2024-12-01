@@ -5,20 +5,19 @@
     Sign in to enjoy shopping our curated selection of stunning Jewellery and accessories.
 {% endblock %}
 {% block title %}
-    Login - Jewellery & Accessories Store
+    Login - Golden Aura
 {% endblock %}
 {% block content %}
 <div class="container mt-4">
     <h1 class="my_title text-center">Login or Create an Account</h1>
     <div class="row">
-        <!-- New Customer Section -->
+
         <div class="col-12 col-md-6 text-center">
             <h2 class="my_title">New to Our Store?</h2>
             <p>Join us and explore the finest collection of Jewellery and accessories.</p>
             <a href="{% url 'accounts:signup' %}" class="btn btn-primary">Create a New Account</a>
         </div>
         
-        <!-- Existing Customer Login -->
         <div class="col-12 col-md-6 bg-light p-4">
             <h2 class="my_title">Already Have an Account?</h2>
             <form method="post">

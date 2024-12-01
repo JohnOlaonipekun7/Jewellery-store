@@ -163,7 +163,7 @@ def create_order(request):
         try:
             order_details = Order.objects.create(
                 token=session.id,
-                total=session.amount_total / 100,  # Convert cents to currency units
+                total=session.amount_total / 100, 
                 emailAddress=customer_details.email,
                 billingName=billing_name,
                 billingAddress1=billing_address.line1,

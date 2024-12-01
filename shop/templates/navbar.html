@@ -1,46 +1,50 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'shop:all_products' %}">Jewellery Store</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'shop:all_products' %}">All Products</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'order:order_history' %}">
-                        <i class="fas fa-history"></i> Order History
-                    </a>
-                </li>
-                {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <form action="{% url 'accounts:logout' %}" method="post">
-                            {% csrf_token %}
-                            <button type="submit" class="nav-link btn btn-link">Logout</button>
-                        </form>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts:signup' %}">Sign Up</a>
-                    </li>
-                {% endif %}
-                {% if item_count > 0 %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'cart:cart_detail' %}">
-                            <i class="bi bi-cart"></i>({{ item_count }})
-                        </a>
-                    </li>
-                {% endif %}
-            </ul>
-            <form class="d-flex ms-auto" action="{% url 'search_app:searchResult' %}" method="get">
-                <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search" name="q">
-                <button class="btn btn-gold my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </div>
+  <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'shop:all_products' %}">Jewellery Store</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'shop:all_products' %}">All Products</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'order:order_history' %}">
+                      <i class="fas fa-history"></i> Order History
+                  </a>
+              </li>
+              {% if user.is_authenticated %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'accounts:profile_detail' pk=user.profile.pk %}">Profile</a>
+                  </li>
+
+                  <li class="nav-item">
+                      <form action="{% url 'accounts:logout' %}" method="post">
+                          {% csrf_token %}
+                          <button type="submit" class="nav-link btn btn-link">Logout</button>
+                      </form>
+                  </li>
+              {% else %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'accounts:signup' %}">Sign Up</a>
+                  </li>
+              {% endif %}
+              {% if item_count > 0 %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'cart:cart_detail' %}">
+                          <i class="bi bi-cart"></i>({{ item_count }})
+                      </a>
+                  </li>
+              {% endif %}
+          </ul>
+          <form class="d-flex ms-auto" action="{% url 'search_app:searchResult' %}" method="get">
+              <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search" name="q">
+              <button class="btn btn-gold my-2 my-sm-0" type="submit">Search</button>
+          </form>
+      </div>
+  </div>
 </nav>
