@@ -43,6 +43,8 @@ Customer Account:
 username:customer
 password:softdevca
 
+
+
 ## Acknowledgments
 
 This project was developed using the lab excercises as a foundation   
